@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Korra — Book a Food Experience</title>
+<meta name="description" content="Korra hosts curries, workshops, buffets and brand collaborations across Odisha and Bengal. Book Korra for your next food experience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #F0E3D0;
+    --paper: #FAF3E7;
+    --ink: #2A1710;
+    --ink-soft: #5C4534;
+    --oxblood: #7B1510;
+    --oxblood-dark: #5C0F0B;
+    --mustard: #C68A2E;
+    --line: rgba(123,21,16,0.18);
+    --radius: 10px;
+    --max: 1120px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background-color:var(--cream);
+    color:var(--ink);
+    font-family:'Inter', -apple-system, sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', Georgia, serif;
+    color:var(--oxblood);
+    margin:0;
+    line-height:1.1;
+    font-weight:600;
+  }
+
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--oxblood);
+    outline-offset:3px;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:100;
+    background:transparent;
+    border-bottom:1px solid transparent;
+    transition:background .3s ease, border-color .3s ease;
+  }
+  header.is-scrolled{
+    background:rgba(240,227,208,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 28px;
+    max-width:var(--max);
+    margin:0 auto;
+  }
+  .brand-mark{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:1.55rem;
+    letter-spacing:-0.01em;
+    color:var(--paper);
+    text-decoration:none;
+    transition:color .3s ease;
+  }
+  header.is-scrolled .brand-mark{color:var(--oxblood);}
+  .nav-links{
+    display:flex;
+    gap:32px;
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .nav-links a{
+    text-decoration:none;
+    color:var(--paper);
+    font-size:0.95rem;
+    font-weight:500;
+    padding-bottom:2px;
+    border-bottom:1px solid transparent;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  header.is-scrolled .nav-links a{color:var(--ink);}
+  .nav-links a:hover{border-color:currentColor;}
+  header:not(.is-scrolled) .nav-links a:hover{color:var(--mustard);}
+  header.is-scrolled .nav-links a:hover{border-color:var(--oxblood); color:var(--oxblood);}
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:12px 22px;
+    border-radius:var(--radius);
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size:0.95rem;
+    text-decoration:none;
+    cursor:pointer;
+    border:1.5px solid var(--oxblood);
+    transition:background .2s ease, color .2s ease, transform .15s ease, box-shadow .2s ease;
+  }
+  .btn-primary{background:var(--oxblood); color:var(--paper); box-shadow:0 6px 16px -8px rgba(92,15,11,0.5);}
+  .btn-primary:hover{background:var(--oxblood-dark); transform:translateY(-2px); box-shadow:0 12px 22px -8px rgba(92,15,11,0.55);}
+  .btn-ghost{background:transparent; color:var(--oxblood);}
+  .btn-ghost:hover{background:rgba(123,21,16,0.08); transform:translateY(-2px);}
+  .btn:active{transform:scale(0.98);}
+
+  .nav-cta{display:flex; align-items:center; gap:18px;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:0;
+    min-height:86vh;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    isolation:isolate;
+  }
+  .hero-bg{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    overflow:hidden;
+  }
+  .hero-bg video{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .hero-scrim{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(42,23,16,0.48) 0%, rgba(42,23,16,0.7) 100%);
+  }
+  .hero-content{
+    position:relative;
+    z-index:2;
+    width:100%;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:120px 28px;
+  }
+  .hero-eyebrow{
+    font-size:1.05rem;
+    color:var(--mustard);
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5.2vw, 4.1rem);
+    letter-spacing:-0.01em;
+    max-width:14ch;
+    color:var(--paper);
+  }
+  .hero p.lede{
+    margin-top:24px;
+    font-size:1.15rem;
+    color:rgba(250,243,231,0.86);
+    max-width:46ch;
+  }
+  .hero-actions{
+    margin-top:36px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .hero .btn-ghost{
+    border-color:var(--paper);
+    color:var(--paper);
+  }
+  .hero .btn-ghost:hover{
+    background:rgba(250,243,231,0.12);
+  }
+
+  .stamp{
+    position:absolute;
+    right:28px;
+    bottom:28px;
+    z-index:3;
+    width:96px;
+    height:96px;
+  }
+  .stamp .stamp-word{
+    font-family:'Inter', sans-serif;
+    font-size:10.5px;
+    font-variant:small-caps;
+    letter-spacing:0.14em;
+    fill:var(--oxblood);
+  }
+
+  .sound-toggle{
+    position:absolute;
+    left:28px;
+    bottom:28px;
+    z-index:3;
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    border:1.5px solid rgba(250,243,231,0.7);
+    background:rgba(42,23,16,0.35);
+    color:var(--paper);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    backdrop-filter:blur(4px);
+    transition:background .2s ease, border-color .2s ease;
+    padding:0;
+  }
+  .sound-toggle:hover{background:rgba(42,23,16,0.55); border-color:var(--paper);}
+  .sound-toggle svg{width:20px; height:20px;}
+  .sound-toggle .icon-on{display:none;}
+  .sound-toggle.is-unmuted .icon-off{display:none;}
+  .sound-toggle.is-unmuted .icon-on{display:block;}
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .reveal.is-visible{opacity:1; transform:translateY(0);}
+  .reveal-delay-1{transition-delay:.12s;}
+  .reveal-delay-2{transition-delay:.24s;}
+  .service-card.reveal:nth-child(1){transition-delay:0s;}
+  .service-card.reveal:nth-child(2){transition-delay:.06s;}
+  .service-card.reveal:nth-child(3){transition-delay:.12s;}
+  .service-card.reveal:nth-child(4){transition-delay:.18s;}
+  .service-card.reveal:nth-child(5){transition-delay:.24s;}
+  .service-card.reveal:nth-child(6){transition-delay:.3s;}
+  .service-card.reveal:nth-child(7){transition-delay:.36s;}
+  .process-step.reveal:nth-child(1){transition-delay:0s;}
+  .process-step.reveal:nth-child(2){transition-delay:.1s;}
+  .process-step.reveal:nth-child(3){transition-delay:.2s;}
+  .about-list li.reveal:nth-child(1){transition-delay:0s;}
+  .about-list li.reveal:nth-child(2){transition-delay:.08s;}
+  .about-list li.reveal:nth-child(3){transition-delay:.16s;}
+  .about-list li.reveal:nth-child(4){transition-delay:.24s;}
+
+  /* ---------- Section shell ---------- */
+  section{padding:74px 0;}
+  .section-paper{background:var(--paper);}
+  .section-head{
+    max-width:640px;
+    margin-bottom:52px;
+  }
+  .section-head h2{font-size:clamp(1.9rem, 3.4vw, 2.6rem);}
+  .section-head p{
+    margin-top:14px;
+    font-size:1.05rem;
+    color:var(--ink-soft);
+    max-width:56ch;
+  }
+
+  /* ---------- About ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+    align-items:start;
+  }
+  .about-copy p{
+    font-size:1.05rem;
+    color:var(--ink-soft);
+    margin:0 0 18px;
+    max-width:52ch;
+  }
+  .about-copy p.drop::first-letter{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-style:italic;
+    font-size:3.4rem;
+    float:left;
+    line-height:0.8;
+    padding:6px 8px 0 0;
+    color:var(--oxblood);
+  }
+  .about-quote{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.5rem;
+    line-height:1.4;
+    color:var(--oxblood);
+    border-left:3px solid var(--mustard);
+    padding-left:24px;
+    margin:0;
+  }
+  .about-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+  }
+  .about-list li{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    padding-bottom:22px;
+    border-bottom:1px solid var(--line);
+  }
+  .about-list li:last-child{border-bottom:none; padding-bottom:0;}
+  .about-list .dot{
+    width:9px; height:9px; border-radius:50%;
+    background:var(--mustard);
+    margin-top:9px;
+    flex-shrink:0;
+  }
+  .about-list strong{display:block; font-family:'Fraunces', serif; font-size:1.05rem; color:var(--ink); margin-bottom:3px;}
+  .about-list span{color:var(--ink-soft); font-size:0.98rem;}
+
+  /* ---------- Process ---------- */
+  .process-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+  }
+  .process-step{
+    padding:0 32px;
+    border-left:1px solid var(--line);
+  }
+  .process-step:first-child{border-left:none; padding-left:0;}
+  .process-num{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.1rem;
+    color:var(--mustard);
+    margin-bottom:14px;
+  }
+  .process-step h3{font-size:1.25rem; margin-bottom:10px;}
+  .process-step p{margin:0; color:var(--ink-soft); font-size:0.98rem;}
+
+  /* ---------- Services ---------- */
+  .service-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .service-card{
+    background:var(--paper);
+    padding:32px 28px 32px 26px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    border-left:3px solid transparent;
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .service-card:hover{
+    border-left-color:var(--mustard);
+    background:var(--cream);
+  }
+  .service-card .icon{
+    width:34px; height:34px;
+    color:var(--oxblood);
+    transition:color .2s ease;
+  }
+  .service-card:hover .icon{color:var(--mustard);}
+  .service-card h3{
+    font-size:1.2rem;
+    color:var(--ink);
+    font-weight:600;
+  }
+  .service-card p{
+    margin:0;
+    color:var(--ink-soft);
+    font-size:0.96rem;
+  }
+  .services-note{
+    margin-top:28px;
+    font-size:0.94rem;
+    color:var(--ink-soft);
+    font-style:italic;
+    font-family:'Fraunces', serif;
+  }
+
+  /* ---------- Collab ---------- */
+  .collab{
+    background-color:var(--oxblood);
+    color:var(--paper);
+  }
+  .collab .section-head p{color:rgba(250,243,231,0.82);}
+  .collab .section-head h2, .collab h3{color:var(--paper);}
+  .collab-grid{
+    display:grid;
+    grid-template-columns:1fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+  .collab-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:0.9rem;
+    color:var(--mustard);
+    font-weight:600;
+    margin-bottom:18px;
+  }
+  .collab-badge svg{width:16px; height:16px;}
+  .collab h3{
+    font-size:clamp(2rem, 4vw, 2.8rem);
+    margin-bottom:14px;
+  }
+  .collab-hosts{
+    font-size:1.05rem;
+    color:rgba(250,243,231,0.9);
+    margin-bottom:8px;
+  }
+  .collab-count{
+    font-size:0.95rem;
+    color:rgba(250,243,231,0.7);
+    margin-bottom:28px;
+  }
+  .collab-count strong{color:var(--mustard); font-family:'Fraunces', serif; font-size:1.1rem;}
+
+  .form-card{
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:18px;
+    padding:38px 36px;
+    border:none;
+    box-shadow:0 24px 48px -22px rgba(42,23,16,0.4);
+  }
+  .field{margin-bottom:18px;}
+  .field:last-of-type{margin-bottom:0;}
+  .field label{
+    display:block;
+    font-size:0.88rem;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:7px;
+  }
+  .field input, .field textarea{
+    width:100%;
+    padding:12px 14px;
+    border:1.5px solid rgba(42,23,16,0.14);
+    border-radius:10px;
+    font-family:'Inter', sans-serif;
+    font-size:0.98rem;
+    color:var(--ink);
+    background:#fff;
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  .field input:focus, .field textarea:focus{
+    border-color:var(--oxblood);
+    box-shadow:0 0 0 3px rgba(123,21,16,0.12);
+    outline:none;
+  }
+  .field textarea{resize:vertical; min-height:88px;}
+  .form-submit{margin-top:22px; width:100%;}
+  .form-note{
+    margin-top:14px;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+  }
+  .form-success{
+    display:none;
+    margin-top:16px;
+    padding:12px 14px;
+    background:rgba(198,138,46,0.15);
+    border:1px solid var(--mustard);
+    border-radius:10px;
+    font-size:0.92rem;
+    color:var(--oxblood-dark);
+    animation:fadeIn .35s ease;
+  }
+  @keyframes fadeIn{ from{opacity:0; transform:translateY(-4px);} to{opacity:1; transform:translateY(0);} }
+  .form-success.show{display:block;}
+
+  .book-cta-card{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:14px;
+  }
+  .book-cta-lede{
+    margin:0;
+    color:var(--ink-soft);
+    font-size:1rem;
+  }
+  .book-cta-card .form-submit{width:auto; margin-top:0;}
+  .book-cta-card .form-note{margin-top:2px;}
+
+  /* ---------- Book modal ---------- */
+  .modal-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:200;
+    background:rgba(42,23,16,0.55);
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
+  .modal-overlay.is-open{display:flex;}
+  .modal-card{
+    position:relative;
+    width:100%;
+    max-width:460px;
+    max-height:90vh;
+    overflow-y:auto;
+    background:var(--paper);
+    border-radius:var(--radius);
+    padding:38px 32px 32px;
+    box-shadow:0 20px 50px rgba(42,23,16,0.35);
+  }
+  .modal-card h3{font-size:1.6rem; margin-bottom:8px;}
+  .modal-sub{
+    margin:0 0 22px;
+    color:var(--ink-soft);
+    font-size:0.96rem;
+  }
+  .modal-close{
+    position:absolute;
+    top:16px;
+    right:16px;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    border:1.5px solid var(--line);
+    background:transparent;
+    color:var(--ink-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:background .2s ease, color .2s ease;
+  }
+  .modal-close:hover{background:rgba(123,21,16,0.08); color:var(--oxblood);}
+  .modal-close svg{width:16px; height:16px;}
+
+  /* ---------- Book ---------- */
+  .book-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:64px;
+    align-items:start;
+  }
+  .book-copy p{
+    color:var(--ink-soft);
+    font-size:1.05rem;
+    max-width:44ch;
+    margin:18px 0 0;
+  }
+  .book-details{
+    list-style:none;
+    margin:32px 0 0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .book-details li{
+    display:flex;
+    gap:12px;
+    font-size:0.95rem;
+    color:var(--ink-soft);
+  }
+  .book-details svg{width:18px; height:18px; color:var(--mustard); flex-shrink:0; margin-top:2px;}
+  #book .form-card{background:#fff;}
+  .row-2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--ink);
+    color:rgba(250,243,231,0.75);
+    padding:52px 0 28px;
+  }
+  .footer-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:32px;
+    padding-bottom:36px;
+    border-bottom:1px solid rgba(250,243,231,0.14);
+  }
+  .footer-tagline{
+    margin-top:14px;
+    font-size:0.92rem;
+    max-width:32ch;
+    color:rgba(250,243,231,0.6);
+  }
+  .footer-links{
+    display:flex;
+    gap:56px;
+    flex-wrap:wrap;
+  }
+  .footer-col h4{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:0.95rem;
+    color:var(--paper);
+    margin:0 0 14px;
+  }
+  .footer-col ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .footer-col a{text-decoration:none; font-size:0.9rem; color:rgba(250,243,231,0.7);}
+  .footer-col a:hover{color:var(--mustard);}
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    padding-top:22px;
+    font-size:0.82rem;
+    color:rgba(250,243,231,0.45);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    .hero-content{padding:90px 24px;}
+    .about-grid, .collab-grid, .book-grid{grid-template-columns:1fr; gap:40px;}
+    .service-grid{grid-template-columns:repeat(2,1fr);}
+    .process-grid{grid-template-columns:1fr; gap:28px;}
+    .process-step{border-left:none; padding-left:0; border-top:1px solid var(--line); padding-top:24px;}
+    .process-step:first-child{border-top:none; padding-top:0;}
+    .nav-links{display:none;}
+  }
+  @media (max-width:600px){
+    .service-grid{grid-template-columns:1fr;}
+    section{padding:54px 0;}
+    .hero{padding:48px 0 30px;}
+    .row-2{grid-template-columns:1fr;}
+    .form-card{padding:26px 22px;}
+    .footer-top{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#top" class="brand-mark">Korra</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#curries-of-cost">Curries of Cost</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#book" class="btn btn-primary js-open-book">Book Korra</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg">
+      <video id="heroVideo" autoplay muted loop playsinline preload="auto">
+        <source src="https://res.cloudinary.com/dara80vtx/video/upload/v1789155015/Truss_Event_Recap_Video_elz0xj.mp4" type="video/mp4">
+      </video>
+      <div class="hero-scrim"></div>
+    </div>
+    <div class="wrap hero-content">
+      <p class="hero-eyebrow">Food, hosted your way</p>
+      <h1>Book Korra for your next food experience</h1>
+      <p class="lede">From private buffets to brand pop-ups, Korra designs and hosts food experiences across Odisha and Bengal — menu, styling, and service, handled end to end.</p>
+      <div class="hero-actions">
+        <a href="#book" class="btn btn-primary js-open-book">Book your seat</a>
+        <a href="#services" class="btn btn-ghost">See what Korra does</a>
+      </div>
+    </div>
+    <button id="soundToggle" class="sound-toggle" type="button" aria-label="Turn music on">
+      <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M23 9 17 15M17 9l6 6"/></svg>
+      <svg class="icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 6a9 9 0 0 1 0 12"/></svg>
+    </button>
+    <svg class="stamp" aria-hidden="true" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+      <defs><path id="stampCircle" d="M80,80 m-62,0 a62,62 0 1,1 124,0 a62,62 0 1,1 -124,0"/></defs>
+      <circle cx="80" cy="80" r="62" fill="#FAF3E7" stroke="#7B1510" stroke-width="1.5" stroke-dasharray="2 5"/>
+      <text class="stamp-word"><textPath href="#stampCircle" startOffset="1%">now booking · now booking · </textPath></text>
+      <circle cx="80" cy="80" r="33" fill="#7B1510"/>
+      <text x="80" y="78" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="14" fill="#F0E3D0">Open</text>
+      <text x="80" y="94" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="14" fill="#F0E3D0">2026</text>
+    </svg>
+  </section>
+
+
+  <!-- About -->
+  <section id="about" class="section-paper">
+    <div class="wrap about-grid">
+      <div class="about-copy">
+        <div class="section-head reveal" style="margin-bottom:28px;">
+          <h2>About Korra</h2>
+        </div>
+        <p class="drop">Korra plans and hosts food experiences built around a menu, a story, and a room full of people — private dinners, brand pop-ups, workshops, and everything a host needs to bring a menu to life.</p>
+        <p>Every booking starts with a conversation about the occasion, the guests, and the kind of food that should be on the table — then Korra builds the menu, the format, and the styling around it.</p>
+        <blockquote class="about-quote">The goal is never just a meal — it's an experience people remember and want to repeat.</blockquote>
+      </div>
+      <ul class="about-list">
+        <li class="reveal"><span class="dot"></span><div><strong>Custom menus</strong><span>Built for the occasion, not picked off a fixed list.</span></div></li>
+        <li class="reveal"><span class="dot"></span><div><strong>End-to-end hosting</strong><span>Menu, styling, and service handled from first call to last plate.</span></div></li>
+        <li class="reveal"><span class="dot"></span><div><strong>Brand-ready</strong><span>Experience working white-label and in collaboration with other brands.</span></div></li>
+        <li class="reveal"><span class="dot"></span><div><strong>Odisha & Bengal</strong><span>Based across both regions, with events hosted on-site or at your venue.</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- Process -->
+  <section id="process">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>How booking works</h2>
+        <p>Three steps from a first message to a hosted room.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-step reveal">
+          <div class="process-num">01</div>
+          <h3>Enquire</h3>
+          <p>Share the occasion, guest count, and what you're picturing through the form below.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-num">02</div>
+          <h3>Menu takes shape</h3>
+          <p>Korra proposes a menu, format, and price built around your brief.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-num">03</div>
+          <h3>Hosted, start to finish</h3>
+          <p>Korra shows up, cooks, styles, and serves — you get to host the room.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Services -->
+  <section id="services" class="section-paper">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>What Korra does</h2>
+        <p>Six ways to work with Korra, from a single workshop to a fully branded collaboration.</p>
+      </div>
+      <div class="service-grid">
+
+        <div class="service-card reveal">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.6 13.4 13 21a2 2 0 0 1-2.8 0l-7-7A2 2 0 0 1 3 12.6V4a1 1 0 0 1 1-1h8.6a2 2 0 0 1 1.4.6l7 7a2 2 0 0 1 0 2.8Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>
+          <h3>White Labeling</h3>
+          <p>Menus and product lines developed under your brand, ready to launch as your own.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v3M9.5 6c0 3 .8 5.5 2.5 6.5C13.7 11.5 14.5 9 14.5 6"/><path d="M8 6c0 4 1.6 7 4 8"/><path d="M16 6c0 4-1.6 7-4 8"/><path d="M12 14v7"/></svg>
+          <h3>Workshops</h3>
+          <p>Hands-on sessions that teach a technique, a cuisine, or one signature dish.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4Z"/><path d="M10 6.5v1.5M10 11v2M10 16v1.5" stroke-dasharray="2 2.2"/></svg>
+          <h3>Shopper Club</h3>
+          <p>A private course built around one menu and one art style, for a small, regular circle.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9.5" cy="12" r="5.5"/><circle cx="14.5" cy="12" r="5.5"/></svg>
+          <h3>Brand Collaboration</h3>
+          <p>Pop-ups and joint menus built together with other brands, in Korra's kitchen or yours.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 13a9 9 0 0 1 18 0"/><path d="M2 13h20"/><path d="M12 6V4"/><circle cx="12" cy="3" r="1" fill="currentColor" stroke="none"/></svg>
+          <h3>Buffet</h3>
+          <p>Themed and private buffets, customised course by course for the occasion.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M7.5 14h3M7.5 17.5h6"/></svg>
+          <h3>Food Events</h3>
+          <p>Workshops and Shopper Club sessions packaged together for a single occasion.</p>
+        </div>
+
+      </div>
+      <p class="services-note">Also coming: product retail, consulting, and panel appearances.</p>
+    </div>
+  </section>
+
+
+  <!-- Curries of Cost collab -->
+  <section id="curries-of-cost" class="collab">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="collab-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+          Featured collaboration
+        </span>
+      </div>
+      <div class="collab-grid">
+        <div class="reveal">
+          <h3>Curries of Cost</h3>
+          <p class="collab-hosts">Hosted by Korra × Curries of Cost</p>
+          <p class="collab-count">Join the people already on the list — <strong>17 have joined the waitlist</strong> so far.</p>
+        </div>
+        <div class="form-card reveal reveal-delay-1">
+          <form id="waitlistForm">
+            <div class="field">
+              <label for="wl-name">Name</label>
+              <input id="wl-name" name="name" type="text" placeholder="Your name" required>
+            </div>
+            <div class="field">
+              <label for="wl-email">Email</label>
+              <input id="wl-email" name="email" type="email" placeholder="you@email.com" required>
+            </div>
+            <button type="submit" class="btn btn-primary form-submit">Join the waitlist</button>
+            <div class="form-success" id="wl-success">You're on the list — Korra will share event details soon.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Book Korra -->
+  <section id="book" class="section-paper">
+    <div class="wrap book-grid">
+      <div class="book-copy">
+        <div class="section-head reveal" style="margin-bottom:0;">
+          <h2>Book Korra</h2>
+          <p>Tell Korra a bit about the event, and hear back with a plan and a quote.</p>
+        </div>
+        <ul class="book-details">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="1"/><path d="M3 9h18M8 3v3M16 3v3"/></svg>Most events are booked 2–3 weeks in advance.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21c0-4-3.5-6-8-6s-8 2-8 6M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/></svg>Available for private hosts, brands, and organisations alike.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12a8 8 0 0 1 16 0M4 12v3a2 2 0 0 0 2 2h1v-6H6a2 2 0 0 0-2 2Zm16 0v3a2 2 0 0 1-2 2h-1v-6h1a2 2 0 0 1 2 2Z"/></svg>A short note about the occasion helps shape the menu faster.</li>
+        </ul>
+      </div>
+      <div class="form-card book-cta-card reveal reveal-delay-1">
+        <p class="book-cta-lede">Fill in a few details and Korra will pick up the conversation on WhatsApp.</p>
+        <button type="button" class="btn btn-primary form-submit js-open-book">Book your seat</button>
+        <p class="form-note">Korra typically replies within 2 working days.</p>
+      </div>
+    </div>
+  </section>
+
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a href="#top" class="brand-mark footer-brand-mark">Korra</a>
+        <p class="footer-tagline">Food experiences, hosted end to end — across Odisha and Bengal.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#curries-of-cost">Curries of Cost</a></li>
+            <li><a href="#book" class="js-open-book">Book Korra</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="mailto:hello@korra.example">hello@korra.example</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Korra. All rights reserved.</span>
+      <span>Built for food, hosted well.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Book Korra modal -->
+<div id="bookModal" class="modal-overlay" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="bookModalTitle">
+    <button type="button" class="modal-close js-close-book" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <h3 id="bookModalTitle">Book Korra</h3>
+    <p class="modal-sub">Share a few details — you'll be sent straight to WhatsApp to finish the conversation.</p>
+    <form id="bookForm">
+      <div class="row-2">
+        <div class="field">
+          <label for="bk-name">Name</label>
+          <input id="bk-name" name="name" type="text" placeholder="Your name" required>
+        </div>
+        <div class="field">
+          <label for="bk-brand">Brand name</label>
+          <input id="bk-brand" name="brand" type="text" placeholder="If booking for a brand">
+        </div>
+      </div>
+      <div class="field">
+        <label for="bk-contact">Email or phone</label>
+        <input id="bk-contact" name="contact" type="text" placeholder="Where Korra can reach you" required>
+      </div>
+      <div class="field">
+        <label for="bk-note">Short note</label>
+        <textarea id="bk-note" name="note" placeholder="What's the occasion, and what are you picturing?"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary form-submit">Continue on WhatsApp</button>
+      <p class="form-note">Opens WhatsApp with your details filled in — nothing is sent until you hit send there.</p>
+    </form>
+  </div>
+</div>
+
+<script>
+  // NOTE: The waitlist form still shows an inline confirmation only — no backend wired up yet.
+  // Replace this with your Elementor form action / endpoint of choice.
+
+  function wireForm(formId, successId){
+    var form = document.getElementById(formId);
+    var success = document.getElementById(successId);
+    if(!form) return;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      success.classList.add('show');
+      form.reset();
+    });
+  }
+
+  wireForm('waitlistForm', 'wl-success');
+
+  // Header switches to a solid bar once the hero video scrolls out of view
+  var siteHeader = document.querySelector('header');
+  function updateHeader(){
+    if(window.scrollY > 40){ siteHeader.classList.add('is-scrolled'); }
+    else{ siteHeader.classList.remove('is-scrolled'); }
+  }
+  window.addEventListener('scroll', updateHeader);
+  updateHeader();
+
+  // Hero video: tries to autoplay with music on; browsers that block that
+  // fall back to muted, and the button lets the visitor turn it on themselves.
+  var heroVideo = document.getElementById('heroVideo');
+  var soundToggle = document.getElementById('soundToggle');
+  if(heroVideo && soundToggle){
+    function reflectSoundState(){
+      soundToggle.classList.toggle('is-unmuted', !heroVideo.muted);
+      soundToggle.setAttribute('aria-label', heroVideo.muted ? 'Turn music on' : 'Turn music off');
+    }
+    heroVideo.muted = false;
+    var playAttempt = heroVideo.play();
+    if(playAttempt !== undefined){
+      playAttempt.then(reflectSoundState).catch(function(){
+        heroVideo.muted = true;
+        heroVideo.play();
+        reflectSoundState();
+      });
+    }
+    soundToggle.addEventListener('click', function(){
+      heroVideo.muted = !heroVideo.muted;
+      if(!heroVideo.muted){ heroVideo.play(); }
+      reflectSoundState();
+    });
+  }
+
+  // Book Korra — popup form that hands off to WhatsApp on submit
+  // TODO: replace with Korra's real WhatsApp number — country code + number, digits only, no + or spaces
+  var WHATSAPP_NUMBER = "91XXXXXXXXXX";
+
+  var bookModal = document.getElementById('bookModal');
+  var bookForm = document.getElementById('bookForm');
+  var lastFocused = null;
+
+  function openBookModal(){
+    lastFocused = document.activeElement;
+    bookModal.classList.add('is-open');
+    bookModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    var firstField = document.getElementById('bk-name');
+    if(firstField) firstField.focus();
+  }
+  function closeBookModal(){
+    bookModal.classList.remove('is-open');
+    bookModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if(lastFocused) lastFocused.focus();
+  }
+
+  document.querySelectorAll('.js-open-book').forEach(function(el){
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      openBookModal();
+    });
+  });
+  document.querySelectorAll('.js-close-book').forEach(function(el){
+    el.addEventListener('click', closeBookModal);
+  });
+  bookModal.addEventListener('click', function(e){
+    if(e.target === bookModal) closeBookModal();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && bookModal.classList.contains('is-open')) closeBookModal();
+  });
+
+  bookForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('bk-name').value.trim();
+    var brand = document.getElementById('bk-brand').value.trim();
+    var contact = document.getElementById('bk-contact').value.trim();
+    var note = document.getElementById('bk-note').value.trim();
+
+    var lines = ["Hi Korra! I'd like to book an event.", "Name: " + name];
+    if(brand) lines.push("Brand: " + brand);
+    lines.push("Contact: " + contact);
+    if(note) lines.push("Note: " + note);
+
+    var message = encodeURIComponent(lines.join("\n"));
+    var waUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + message;
+    window.open(waUrl, "_blank");
+    bookForm.reset();
+    closeBookModal();
+  });
+
+  // Fade-and-rise reveal animation as sections scroll into view
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var revealObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15, rootMargin:'0px 0px -40px 0px'});
+    revealEls.forEach(function(el){ revealObserver.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+</script>
+
+</body>
+</html>
