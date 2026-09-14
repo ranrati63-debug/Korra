@@ -5,6 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Korra — Links</title>
 <meta name="description" content="Book Korra, explore services, or reserve a seat at Curries of Cost.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="https://res.cloudinary.com/dara80vtx/image/upload/v1789367153/KORRA_BRAND_KIT__1_-2-removebg-preview_prgzec.png">
+<link rel="apple-touch-icon" href="https://res.cloudinary.com/dara80vtx/image/upload/v1789367153/KORRA_BRAND_KIT__1_-2-removebg-preview_prgzec.png">
+<link rel="shortcut icon" href="https://res.cloudinary.com/dara80vtx/image/upload/v1789367153/KORRA_BRAND_KIT__1_-2-removebg-preview_prgzec.png">
+
+<!-- Open Graph / link preview thumbnail -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Korra">
+<meta property="og:title" content="Korra — Book an Event, Explore Services &amp; More">
+<meta property="og:description" content="Book an event, explore workshops &amp; Shopper Club sittings, or reach Korra directly on WhatsApp.">
+<meta property="og:image" content="https://res.cloudinary.com/dara80vtx/image/upload/v1789367153/KORRA_BRAND_KIT__1_-2-removebg-preview_prgzec.png">
+
+<!-- Twitter card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Korra — Book an Event, Explore Services &amp; More">
+<meta name="twitter:description" content="Book an event, explore workshops &amp; Shopper Club sittings, or reach Korra directly on WhatsApp.">
+<meta name="twitter:image" content="https://res.cloudinary.com/dara80vtx/image/upload/v1789367153/KORRA_BRAND_KIT__1_-2-removebg-preview_prgzec.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Arimo:ital,wght@0,400;0,500;0,700;1,400&family=Playfair+Display:ital,wght@0,700;0,800;1,500&display=swap" rel="stylesheet">
@@ -177,6 +195,15 @@
     box-shadow:inset 0 0 0 1px rgba(0,98,66,0.15);
   }
   .linktree-thumb img{width:100%; height:100%; object-fit:cover;}
+  .linktree-thumb-icon{
+    background:linear-gradient(135deg, var(--oxblood), var(--oxblood-dark));
+    color:var(--paper);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:inset 0 0 0 1px rgba(250,243,231,0.15);
+  }
+  .linktree-thumb-icon svg{width:28px; height:28px;}
   .linktree-text{display:flex; flex-direction:column; gap:2px; text-align:center;}
   .linktree-name{
     font-family:'Baloo 2', sans-serif;
@@ -282,6 +309,34 @@
   .field textarea{resize:vertical; min-height:88px;}
   .form-note{margin-top:14px; font-size:0.85rem; color:var(--ink-soft);}
 
+  .slot-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:10px;
+  }
+  .slot-btn{
+    padding:10px 6px;
+    border-radius:10px;
+    border:1.5px solid rgba(42,23,16,0.14);
+    background:#fff;
+    color:var(--ink);
+    font-family:'Arimo', sans-serif;
+    font-weight:700;
+    font-size:0.88rem;
+    cursor:pointer;
+    transition:border-color .2s ease, background .2s ease, color .2s ease;
+  }
+  .slot-btn:hover{border-color:var(--oxblood);}
+  .slot-btn.is-selected{
+    background:var(--oxblood);
+    border-color:var(--oxblood);
+    color:var(--paper);
+  }
+  .slot-btn[disabled]{
+    opacity:0.4;
+    cursor:not-allowed;
+  }
+
   /* ---------- Info modal (Services / About) ---------- */
   .modal-card.modal-wide{max-width:520px;}
   .modal-tag{
@@ -306,24 +361,19 @@
   }
   .service-item{
     display:grid;
-    grid-template-columns:34px 1fr;
+    grid-template-columns:44px 1fr;
     gap:14px;
     align-items:start;
   }
-  .service-num{
-    width:34px;
-    height:34px;
-    border-radius:50%;
-    background:var(--oxblood);
-    color:var(--paper);
-    font-family:'Baloo 2', sans-serif;
-    font-weight:700;
-    font-size:0.95rem;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+  .service-icon{
+    width:44px;
+    height:44px;
+    border-radius:12px;
+    overflow:hidden;
     flex-shrink:0;
+    box-shadow:inset 0 0 0 1px rgba(0,98,66,0.15);
   }
+  .service-icon img{width:100%; height:100%; object-fit:cover; display:block;}
   .service-title{
     font-family:'Baloo 2', sans-serif;
     font-weight:600;
@@ -352,12 +402,12 @@
 
 <div class="linktree-hub">
   <div class="linktree-avatar reveal">
-    <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1789361226/KORRA_BRAND_KIT.pdf_kvzade.png" alt="Korra">
+    <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1789367153/KORRA_BRAND_KIT__1_-2-removebg-preview_prgzec.png" alt="Korra">
   </div>
   <span class="linktree-dash reveal" aria-hidden="true"></span>
   <p class="linktree-sub reveal">Book an event – Reserve your seat | Explore services – Menus, workshops &amp; more</p>
   <div class="linktree-social reveal">
-    <a href="#" aria-label="Follow Korra on Instagram">
+    <a href="https://www.instagram.com/korrasocial" target="_blank" rel="noopener" aria-label="Follow Korra on Instagram">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
     </a>
   </div>
@@ -365,8 +415,8 @@
   <div class="linktree-list">
     <button type="button" class="linktree-item js-open-event reveal">
       <span class="linktree-content">
-        <span class="linktree-thumb">
-          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=200&h=200&fit=crop&q=80" alt="">
+        <span class="linktree-thumb linktree-thumb-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 13a8 8 0 0 1 16 0"/><path d="M3 13h18"/><path d="M12 6V4"/></svg>
         </span>
         <span class="linktree-text">
           <span class="linktree-name">Book Current Event</span>
@@ -378,8 +428,8 @@
 
     <button type="button" class="linktree-item js-open-services reveal">
       <span class="linktree-content">
-        <span class="linktree-thumb">
-          <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=200&h=200&fit=crop&q=80" alt="">
+        <span class="linktree-thumb linktree-thumb-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v3M9.5 6c0 3 .8 5.5 2.5 6.5C13.7 11.5 14.5 9 14.5 6"/><path d="M8 6c0 4 1.6 7 4 8"/><path d="M16 6c0 4-1.6 7-4 8"/><path d="M12 14v7"/></svg>
         </span>
         <span class="linktree-text">
           <span class="linktree-name">Explore Services</span>
@@ -391,8 +441,8 @@
 
     <button type="button" class="linktree-item js-open-about reveal">
       <span class="linktree-content">
-        <span class="linktree-thumb">
-          <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=200&h=200&fit=crop&q=80" alt="">
+        <span class="linktree-thumb linktree-thumb-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.6 13.4 13 21a2 2 0 0 1-2.8 0l-7-7A2 2 0 0 1 3 12.6V4a1 1 0 0 1 1-1h8.6a2 2 0 0 1 1.4.6l7 7a2 2 0 0 1 0 2.8Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>
         </span>
         <span class="linktree-text">
           <span class="linktree-name">About Korra</span>
@@ -404,8 +454,8 @@
 
     <button type="button" class="linktree-item js-open-book reveal">
       <span class="linktree-content">
-        <span class="linktree-thumb">
-          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=200&h=200&fit=crop&q=80" alt="">
+        <span class="linktree-thumb linktree-thumb-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v12H7l-3 3V4Z"/></svg>
         </span>
         <span class="linktree-text">
           <span class="linktree-name">Book Korra Directly</span>
@@ -473,26 +523,34 @@
           <input id="ev-mobile" name="mobile" type="tel" placeholder="Your number" required>
         </div>
       </div>
-      <div class="row-2">
-        <div class="field">
-          <label for="ev-date">Date</label>
-          <input id="ev-date" name="date" type="date" required>
-        </div>
-        <div class="field">
-          <label for="ev-time">Time</label>
-          <input id="ev-time" name="time" type="time" required>
-        </div>
-      </div>
       <div class="field">
         <label for="ev-event">Event</label>
         <select id="ev-event" name="event" required>
           <option value="" disabled selected>Choose an event</option>
-          <option value="Curries of Cost">Curries of Cost</option>
+          <option value="Curries of Coast">Curries of Coast</option>
           <option value="Basic Cooking Workshop">Basic Cooking Workshop</option>
           <option value="Buffet Night">Buffet Night</option>
           <option value="Brand Collaboration Pop-up">Brand Collaboration Pop-up</option>
           <option value="Shopper Club Session">Shopper Club Session</option>
         </select>
+      </div>
+      <div class="field">
+        <label for="ev-date">Date</label>
+        <input id="ev-date" name="date" type="date" required>
+      </div>
+      <div class="field" id="ev-slot-field" hidden>
+        <label>Time Slot</label>
+        <div class="slot-grid" id="ev-slot-grid">
+          <button type="button" class="slot-btn" data-slot="12:00 PM – 1:00 PM">12–1</button>
+          <button type="button" class="slot-btn" data-slot="1:00 PM – 2:00 PM">1–2</button>
+          <button type="button" class="slot-btn" data-slot="2:00 PM – 3:00 PM">2–3</button>
+          <button type="button" class="slot-btn" data-slot="3:00 PM – 4:00 PM">3–4</button>
+          <button type="button" class="slot-btn" data-slot="4:00 PM – 5:00 PM">4–5</button>
+          <button type="button" class="slot-btn" data-slot="5:00 PM – 6:00 PM">5–6</button>
+          <button type="button" class="slot-btn" data-slot="6:00 PM – 7:00 PM">6–7</button>
+          <button type="button" class="slot-btn" data-slot="7:00 PM – 8:00 PM">7–8</button>
+          <button type="button" class="slot-btn" data-slot="8:00 PM – 9:00 PM">8–9</button>
+        </div>
       </div>
       <button type="submit" class="btn btn-primary form-submit">Continue on WhatsApp</button>
       <p class="form-note">Opens WhatsApp with your details filled in — nothing is sent until you hit send there.</p>
@@ -508,55 +566,78 @@
     </button>
     <span class="modal-tag">Education &amp; Experience</span>
     <h3 id="servicesModalTitle">What We Do</h3>
-    <p class="modal-sub">Seven ways to work with Korra — pick what fits, or ask us to blend a few together.</p>
+    <p class="modal-sub">Eight ways to work with Korra — pick what fits, or ask us to blend a few together.</p>
     <ol class="service-list">
       <li class="service-item">
-        <span class="service-num">1</span>
-        <span>
-          <p class="service-title">White Labeling</p>
-          <p class="service-desc">Produce and package under your own brand — Korra handles the kitchen, you handle the label.</p>
+        <span class="service-icon">
+          <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=120&h=120&fit=crop&q=80" alt="">
         </span>
-      </li>
-      <li class="service-item">
-        <span class="service-num">2</span>
-        <span>
-          <p class="service-title">Workshop</p>
-          <p class="service-desc">Hands-on sessions where guests cook alongside us, built around a theme or technique.</p>
-        </span>
-      </li>
-      <li class="service-item">
-        <span class="service-num">3</span>
         <span>
           <p class="service-title">Shopper Club</p>
           <p class="service-desc">A private, curated course of menus presented art-style — an intimate tasting experience.</p>
         </span>
       </li>
       <li class="service-item">
-        <span class="service-num">4</span>
+        <span class="service-icon">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=120&h=120&fit=crop&q=80" alt="">
+        </span>
         <span>
-          <p class="service-title">Brand Collaboration</p>
+          <p class="service-title">Brand Collaboration — Pop-ups</p>
           <p class="service-desc">Pop-ups built with other brands — co-branded menus, spaces &amp; moments.</p>
         </span>
       </li>
       <li class="service-item">
-        <span class="service-num">5</span>
+        <span class="service-icon">
+          <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=120&h=120&fit=crop&q=80" alt="">
+        </span>
         <span>
-          <p class="service-title">Buffet</p>
-          <p class="service-desc">Themed and private buffets, fully customised to your event and guest list.</p>
+          <p class="service-title">Workshop</p>
+          <p class="service-desc">Hands-on sessions where guests cook alongside us, built around a theme or technique.</p>
         </span>
       </li>
       <li class="service-item">
-        <span class="service-num">6</span>
+        <span class="service-icon">
+          <img src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=120&h=120&fit=crop&q=80" alt="">
+        </span>
         <span>
           <p class="service-title">Basic Cooking</p>
           <p class="service-desc">Foundational cooking classes for anyone starting out in the kitchen.</p>
         </span>
       </li>
       <li class="service-item">
-        <span class="service-num">7</span>
+        <span class="service-icon">
+          <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=120&h=120&fit=crop&q=80" alt="">
+        </span>
+        <span>
+          <p class="service-title">Buffet</p>
+          <p class="service-desc">Themed and private buffets, fully customised to your event and guest list.</p>
+        </span>
+      </li>
+      <li class="service-item">
+        <span class="service-icon">
+          <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=120&h=120&fit=crop&q=80" alt="">
+        </span>
+        <span>
+          <p class="service-title">Customising &amp; Gifting</p>
+          <p class="service-desc">Bespoke hampers, favours &amp; gifting sets, styled and packed to your occasion.</p>
+        </span>
+      </li>
+      <li class="service-item">
+        <span class="service-icon">
+          <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=120&h=120&fit=crop&q=80" alt="">
+        </span>
         <span>
           <p class="service-title">Food Events</p>
           <p class="service-desc">Larger gatherings that blend a workshop and a Shopper Club sitting into one experience.</p>
+        </span>
+      </li>
+      <li class="service-item">
+        <span class="service-icon">
+          <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=120&h=120&fit=crop&q=80" alt="">
+        </span>
+        <span>
+          <p class="service-title">White Labeling</p>
+          <p class="service-desc">Produce and package under your own brand — Korra handles the kitchen, you handle the label.</p>
         </span>
       </li>
     </ol>
@@ -646,6 +727,15 @@
     eventModal.classList.add('is-open');
     eventModal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+
+    // Auto-fill today's date so guests don't have to pick it themselves,
+    // and stop anyone from selecting a date in the past.
+    var evDateInput = document.getElementById('ev-date');
+    var today = new Date();
+    var todayStr = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0');
+    evDateInput.min = todayStr;
+    if(!evDateInput.value) evDateInput.value = todayStr;
+
     var firstField = document.getElementById('ev-name');
     if(firstField) firstField.focus();
   }
@@ -672,20 +762,50 @@
     if(e.key === 'Escape' && eventModal.classList.contains('is-open')) closeEventModal();
   });
 
+  // Selecting an event reveals the time-slot picker; clicking a slot selects it
+  var evEventSelect = document.getElementById('ev-event');
+  var evSlotField = document.getElementById('ev-slot-field');
+  var evSlotButtons = document.querySelectorAll('#ev-slot-grid .slot-btn');
+  var selectedSlot = "";
+
+  evEventSelect.addEventListener('change', function(){
+    if(evEventSelect.value){
+      evSlotField.hidden = false;
+    } else {
+      evSlotField.hidden = true;
+      selectedSlot = "";
+      evSlotButtons.forEach(function(b){ b.classList.remove('is-selected'); });
+    }
+  });
+
+  evSlotButtons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      evSlotButtons.forEach(function(b){ b.classList.remove('is-selected'); });
+      btn.classList.add('is-selected');
+      selectedSlot = btn.getAttribute('data-slot');
+    });
+  });
+
   eventForm.addEventListener('submit', function(e){
     e.preventDefault();
+
+    if(!selectedSlot){
+      evSlotField.hidden = false;
+      evSlotButtons[0].focus();
+      return;
+    }
+
     var name = document.getElementById('ev-name').value.trim();
     var email = document.getElementById('ev-email').value.trim();
     var mobile = document.getElementById('ev-mobile').value.trim();
     var date = document.getElementById('ev-date').value;
-    var time = document.getElementById('ev-time').value;
     var event = document.getElementById('ev-event').value;
 
     var lines = [
       "Hi Korra! I'd like to book an event.",
       "Event: " + event,
       "Date: " + date,
-      "Time: " + time,
+      "Time slot: " + selectedSlot,
       "Name: " + name,
       "Email: " + email,
       "Mobile: " + mobile
@@ -695,6 +815,9 @@
     var waUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + message;
     window.open(waUrl, "_blank");
     eventForm.reset();
+    evSlotField.hidden = true;
+    selectedSlot = "";
+    evSlotButtons.forEach(function(b){ b.classList.remove('is-selected'); });
     closeEventModal();
   });
 
