@@ -309,34 +309,6 @@
   .field textarea{resize:vertical; min-height:88px;}
   .form-note{margin-top:14px; font-size:0.85rem; color:var(--ink-soft);}
 
-  .slot-grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:10px;
-  }
-  .slot-btn{
-    padding:10px 6px;
-    border-radius:10px;
-    border:1.5px solid rgba(42,23,16,0.14);
-    background:#fff;
-    color:var(--ink);
-    font-family:'Arimo', sans-serif;
-    font-weight:700;
-    font-size:0.88rem;
-    cursor:pointer;
-    transition:border-color .2s ease, background .2s ease, color .2s ease;
-  }
-  .slot-btn:hover{border-color:var(--oxblood);}
-  .slot-btn.is-selected{
-    background:var(--oxblood);
-    border-color:var(--oxblood);
-    color:var(--paper);
-  }
-  .slot-btn[disabled]{
-    opacity:0.4;
-    cursor:not-allowed;
-  }
-
   /* ---------- Info modal (Services / About) ---------- */
   .modal-card.modal-wide{max-width:520px;}
   .modal-tag{
@@ -420,7 +392,7 @@
         </span>
         <span class="linktree-text">
           <span class="linktree-name">Book Current Event</span>
-          <span class="linktree-date">Choose a date &amp; event</span>
+          <span class="linktree-date">Curries of Coast — 20 Sept, 1–5 PM</span>
         </span>
         <svg class="linktree-dots" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg>
       </span>
@@ -506,9 +478,11 @@
     <button type="button" class="modal-close js-close-event" aria-label="Close">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
     </button>
-    <h3 id="eventModalTitle">Book Current Event</h3>
-    <p class="modal-sub">Pick an event and a date, and you'll be sent to WhatsApp to confirm.</p>
+    <span class="modal-tag">20 September</span>
+    <h3 id="eventModalTitle">Book Curries of Coast</h3>
+    <p class="modal-sub">Choose any time between 1–5 PM. Last booking date: 20th September.</p>
     <form id="eventForm">
+      <input type="hidden" id="ev-date" name="date" value="2026-09-20">
       <div class="field">
         <label for="ev-name">Name</label>
         <input id="ev-name" name="name" type="text" placeholder="Your name" required>
@@ -526,40 +500,22 @@
       <div class="field">
         <label for="ev-event">Event</label>
         <select id="ev-event" name="event" required>
-          <option value="" disabled selected>Choose an event</option>
-          <option value="Curries of Coast">Curries of Coast</option>
-          <option value="Basic Cooking Workshop">Basic Cooking Workshop</option>
-          <option value="Buffet Night">Buffet Night</option>
-          <option value="Brand Collaboration Pop-up">Brand Collaboration Pop-up</option>
-          <option value="Shopper Club Session">Shopper Club Session</option>
+          <option value="Curries of Coast" selected>Curries of Coast</option>
         </select>
       </div>
       <div class="field">
-        <label for="ev-date">Date</label>
-        <input id="ev-date" name="date" type="date" required>
-      </div>
-      <div class="field" id="ev-slot-field" hidden>
-        <label>Time Slot</label>
-        <div class="slot-grid" id="ev-slot-grid">
-          <button type="button" class="slot-btn" data-slot="12:00 PM – 1:00 PM">12–1</button>
-          <button type="button" class="slot-btn" data-slot="1:00 PM – 2:00 PM">1–2</button>
-          <button type="button" class="slot-btn" data-slot="2:00 PM – 3:00 PM">2–3</button>
-          <button type="button" class="slot-btn" data-slot="3:00 PM – 4:00 PM">3–4</button>
-          <button type="button" class="slot-btn" data-slot="4:00 PM – 5:00 PM">4–5</button>
-          <button type="button" class="slot-btn" data-slot="5:00 PM – 6:00 PM">5–6</button>
-          <button type="button" class="slot-btn" data-slot="6:00 PM – 7:00 PM">6–7</button>
-          <button type="button" class="slot-btn" data-slot="7:00 PM – 8:00 PM">7–8</button>
-          <button type="button" class="slot-btn" data-slot="8:00 PM – 9:00 PM">8–9</button>
-        </div>
+        <label for="ev-time">Preferred time (1 PM – 5 PM)</label>
+        <input id="ev-time" name="time" type="time" min="13:00" max="17:00" required>
       </div>
       <button type="submit" class="btn btn-primary form-submit">Continue on WhatsApp</button>
-      <p class="form-note">Opens WhatsApp with your details filled in — nothing is sent until you hit send there.</p>
+      <p class="form-note">Opens WhatsApp with your details filled in — nothing is sent until you hit send there. Last booking date: 20th September.</p>
     </form>
   </div>
 </div>
 
 <!-- Explore Services modal -->
 <div id="servicesModal" class="modal-overlay" aria-hidden="true">
+
   <div class="modal-card modal-wide" role="dialog" aria-modal="true" aria-labelledby="servicesModalTitle">
     <button type="button" class="modal-close js-close-services" aria-label="Close">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
@@ -727,15 +683,6 @@
     eventModal.classList.add('is-open');
     eventModal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-
-    // Auto-fill today's date so guests don't have to pick it themselves,
-    // and stop anyone from selecting a date in the past.
-    var evDateInput = document.getElementById('ev-date');
-    var today = new Date();
-    var todayStr = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0');
-    evDateInput.min = todayStr;
-    if(!evDateInput.value) evDateInput.value = todayStr;
-
     var firstField = document.getElementById('ev-name');
     if(firstField) firstField.focus();
   }
@@ -762,50 +709,36 @@
     if(e.key === 'Escape' && eventModal.classList.contains('is-open')) closeEventModal();
   });
 
-  // Selecting an event reveals the time-slot picker; clicking a slot selects it
-  var evEventSelect = document.getElementById('ev-event');
-  var evSlotField = document.getElementById('ev-slot-field');
-  var evSlotButtons = document.querySelectorAll('#ev-slot-grid .slot-btn');
-  var selectedSlot = "";
-
-  evEventSelect.addEventListener('change', function(){
-    if(evEventSelect.value){
-      evSlotField.hidden = false;
-    } else {
-      evSlotField.hidden = true;
-      selectedSlot = "";
-      evSlotButtons.forEach(function(b){ b.classList.remove('is-selected'); });
-    }
-  });
-
-  evSlotButtons.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      evSlotButtons.forEach(function(b){ b.classList.remove('is-selected'); });
-      btn.classList.add('is-selected');
-      selectedSlot = btn.getAttribute('data-slot');
-    });
-  });
+  // Converts a 24h "HH:MM" value into a friendly 12h label for the WhatsApp message
+  function formatTime12h(value){
+    var parts = value.split(':');
+    var hours = parseInt(parts[0], 10);
+    var minutes = parts[1];
+    var period = hours >= 12 ? 'PM' : 'AM';
+    var hours12 = hours % 12;
+    if(hours12 === 0) hours12 = 12;
+    return hours12 + ':' + minutes + ' ' + period;
+  }
 
   eventForm.addEventListener('submit', function(e){
     e.preventDefault();
 
-    if(!selectedSlot){
-      evSlotField.hidden = false;
-      evSlotButtons[0].focus();
-      return;
-    }
-
     var name = document.getElementById('ev-name').value.trim();
     var email = document.getElementById('ev-email').value.trim();
     var mobile = document.getElementById('ev-mobile').value.trim();
-    var date = document.getElementById('ev-date').value;
     var event = document.getElementById('ev-event').value;
+    var timeValue = document.getElementById('ev-time').value;
+
+    if(timeValue < "13:00" || timeValue > "17:00"){
+      document.getElementById('ev-time').reportValidity();
+      return;
+    }
 
     var lines = [
-      "Hi Korra! I'd like to book an event.",
+      "Hi Korra! I'd like to book Curries of Coast.",
       "Event: " + event,
-      "Date: " + date,
-      "Time slot: " + selectedSlot,
+      "Date: 20 September",
+      "Preferred time: " + formatTime12h(timeValue),
       "Name: " + name,
       "Email: " + email,
       "Mobile: " + mobile
@@ -815,9 +748,6 @@
     var waUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + message;
     window.open(waUrl, "_blank");
     eventForm.reset();
-    evSlotField.hidden = true;
-    selectedSlot = "";
-    evSlotButtons.forEach(function(b){ b.classList.remove('is-selected'); });
     closeEventModal();
   });
 
