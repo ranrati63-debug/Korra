@@ -76,11 +76,18 @@
     text-align:center;
   }
   .linktree-avatar{
-    width:220px;
-    height:auto;
-    margin:0 auto 30px;
+    width:96px;
+    height:96px;
+    border-radius:50%;
+    background:var(--paper);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    margin:0 auto 26px;
+    box-shadow:0 10px 24px -10px rgba(0,0,0,0.45);
   }
-  .linktree-avatar img{width:100%; height:auto;}
+  .linktree-avatar img{width:68%; height:auto;}
   .linktree-dash{
     display:block;
     width:44px;
@@ -153,7 +160,7 @@
   .linktree-item:hover{transform:translateY(-2px);}
   .linktree-content{
     display:grid;
-    grid-template-columns:48px 1fr 20px;
+    grid-template-columns:56px 1fr 20px;
     align-items:center;
     gap:16px;
     width:100%;
@@ -164,17 +171,18 @@
     box-shadow:0 14px 30px -16px rgba(0,0,0,0.4);
   }
   .linktree-thumb{
-    width:48px;
-    height:48px;
-    border-radius:12px;
-    background:var(--oxblood);
+    width:56px;
+    height:56px;
+    border-radius:14px;
+    background:linear-gradient(135deg, var(--oxblood), var(--oxblood-dark));
     color:var(--paper);
     display:flex;
     align-items:center;
     justify-content:center;
     flex-shrink:0;
+    box-shadow:inset 0 0 0 1px rgba(250,243,231,0.15);
   }
-  .linktree-thumb svg{width:24px; height:24px;}
+  .linktree-thumb svg{width:28px; height:28px;}
   .linktree-text{display:flex; flex-direction:column; gap:2px; text-align:center;}
   .linktree-name{
     font-family:'Baloo 2', sans-serif;
@@ -310,7 +318,7 @@
 
 <div class="linktree-hub">
   <div class="linktree-avatar reveal">
-    <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1789361226/KORRA_BRAND_KIT.pdf_kvzade.png" alt="Korra">
+    <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1789362215/KORRA_BRAND_KIT.pdf-removebg-preview_lah3kq.png" alt="Korra">
   </div>
   <span class="linktree-dash reveal" aria-hidden="true"></span>
   <p class="linktree-sub reveal">Book an event – Reserve your seat | Explore services – Menus, workshops &amp; more</p>
